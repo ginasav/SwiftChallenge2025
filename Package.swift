@@ -32,9 +32,15 @@ let package = Package(
             ]
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/twostraws/Subsonic.git", "0.2.0"..<"1.0.0")
+    ],
     targets: [
         .executableTarget(
             name: "AppModule",
+            dependencies: [
+                .product(name: "Subsonic", package: "Subsonic")
+            ],
             path: ".",
             resources: [
                 .process("Resources")
