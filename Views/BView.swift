@@ -6,6 +6,10 @@ struct BView: View {
     @Namespace var animationNamespace
     @State var showFirstImage = true
     
+    init() {
+        registerCustomFont(named: "Bolota Bold")
+    }
+    
     var body: some View {
         ZStack{
             
