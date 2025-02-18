@@ -11,62 +11,77 @@ struct AView: View {
     
     var body: some View {
         
-        ZStack {
+        NavigationStack{
             
-            GeometryReader{proxy in
+            ZStack {
                 
-                let size = proxy.size
-                
-                Image("A_bg")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: size.width, height: size.height)
-                
-            }//: IMAGE BACKGROUND
-            .ignoresSafeArea()
-            
-            GeometryReader{proxy in
-                
-                HStack {
-                    Image("A_fg")
+                GeometryReader{proxy in
+                    
+                    let size = proxy.size
+                    
+                    Image("A_bg")
                         .resizable()
                         .scaledToFill()
-                }
-            }//: IMAGE FOREGROUND
-            
-            //: MOTION UPDATER
-            .onAppear(perform: {
-                motionData.fetchMotionData(duration: 55)
-            })
-            
-            //APPLY OFFSET
-            .offset(motionData.movingOffset)
-            
-            //TEXT ZONE ON FOREGROUND
-            VStack {
-                HStack{
-                    Text("A is for Amazement,\ntry to wiggle and play\nto see flowers dance freely\nwhile kites float away!").font(Font.custom("Bolota Bold", size: 42))
-                        .foregroundColor(.red.opacity(0.9))
-                        .padding()
-                    Spacer()
-                    Button {
-                        isPlaying.toggle()
-                    } label: {
-                        Image(systemName: isPlaying ? "speaker.wave.2" : "speaker.slash")
+                        .frame(width: size.width, height: size.height)
+                    
+                }//: IMAGE BACKGROUND
+                .ignoresSafeArea()
+                
+                GeometryReader{proxy in
+                    
+                    HStack {
+                        Image("A_fg")
                             .resizable()
-                            .frame(width: 65, height: 65)
-                            .padding(.bottom, 100)
-                            .padding(.trailing, 20)
-                            .fontWeight(.medium)
-                            .foregroundColor(.red.opacity(0.5))
-                    } .sound("amazement_rhyme.m4a", isPlaying: $isPlaying)
+                            .scaledToFill()
+                    }
+                }//: IMAGE FOREGROUND
+                
+                //: MOTION UPDATER
+                .onAppear(perform: {
+                    motionData.fetchMotionData(duration: 55)
+                })
+                
+                //APPLY OFFSET
+                .offset(motionData.movingOffset)
+                
+                //TEXT ZONE ON FOREGROUND
+                VStack {
+                    HStack{
+                        Text("A is for Amazement,\ntry to wiggle and play\nto see flowers dance freely\nwhile kites float away!").font(Font.custom("Bolota Bold", size: 42))
+                            .foregroundColor(.red.opacity(0.9))
+                            .padding()
+                        Spacer()
+                        Button {
+                            isPlaying.toggle()
+                        } label: {
+                            Image(systemName: isPlaying ? "speaker.wave.2" : "speaker.slash")
+                                .resizable()
+                                .frame(width: 65, height: 65)
+                                .padding(.bottom, 100)
+                                .padding(.trailing, 20)
+                                .fontWeight(.medium)
+                                .foregroundColor(.red.opacity(0.5))
+                        } .sound("amazement_rhyme.m4a", isPlaying: $isPlaying)
+                    }
+                    .padding()
+                    Spacer()
+                    
+                    //NAVIGATION BUTTON
+                    NavigationLink(destination: BView()) {
+                        HStack {
+                            Spacer()
+                            Image("go_ahead")
+                                .resizable()
+                                .opacity(0.8)
+                                .frame(width: 60, height: 59)
+                                .scaledToFit()
+                                .padding()
+                        } .padding()
+                    }
                 }
-                .padding()
-                Spacer()
+                
+                
             }
-            
-
         }
-        
     }
 }
