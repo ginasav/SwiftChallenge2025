@@ -3,6 +3,8 @@ import SwiftUI
 struct OnboardingTextView: View {
     @Binding var textCounter: Int
     @Binding var textOpacity: Double
+    //to control the popping effect of the hand image
+    @State var isPopping: Bool = false
     
     var body: some View {
         VStack {
@@ -17,10 +19,19 @@ struct OnboardingTextView: View {
             case 3:
                 VStack {
                     Text("Let's start!")
+                    .font(Font.custom("Bolota Bold", size: 40))
                     Image(systemName: "hand.tap")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50, height: 50)
+                    //ANIMATION FOR THE HAND
+                        .scaleEffect(isPopping ? 1.2 : 1.0)
+                        .onAppear {
+                            withAnimation(Animation.easeInOut(duration: 0.6)
+                                .repeatForever(autoreverses: true)) {
+                                    isPopping.toggle()
+                                }
+                        }
                 }
             default:
                 Text("")
