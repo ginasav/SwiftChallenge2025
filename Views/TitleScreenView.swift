@@ -15,34 +15,29 @@ struct TitleScreenView: View {
     
     var body: some View{
         NavigationStack{
-            GeometryReader{screen in
+            GeometryReader{screen in //to read the size screen
                 
                 let size = screen.size
                 ZStack{
-                    
                     //TITLE SCREEN BACKGROUND
                     Image("background")
                         .resizable()
                         .scaledToFill()
                         .frame(width: size.width, height: size.height)
                     
-                    if !showOnBoarding {
+                    if !showOnBoarding { //to handle the disappearing of the two following images
                             // Title & Action Text (Only Before Onboarding Starts)
                             //TITLE SCREEN BACKGROUND
                             Image("title")
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: size.width, height: size.height)
-                                .transition(.opacity.combined(with: .scale(scale: 2))) // Fade + Shrink effect
-                            
-                            
+  
                             //ACTION TEXT
                             Image("action_text")
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: size.width, height: size.height)
-                                .transition(.opacity.combined(with: .scale(scale: 2))) // Fade + Shrink effect
-                            
                         }
                         
                         //EMOTIONS MIDDLEGROUND
@@ -67,35 +62,9 @@ struct TitleScreenView: View {
                                     isWiggling = true
                                 }
                             }
+                    
                         //Text of the on-boarding in a switch that is triggered by a textCounter
-                        if showOnBoarding {
-                            //                        VStack{
-                            //                            switch textCounter {
-                            //                                
-                            //                            case 0:
-                            //                                Text("This project helps children learn English alphabet through emotions!\nEach letter is connected to a feeling that kids can explore through interactive scenes.")
-                            //                                    .frame(width: 900, height: 200, alignment: .center)
-                            //                                
-                            //                            case 1:
-                            //                                Text("Interact with your device to make things happen!\nWiggle, sway or tap to bring each scene to life.")
-                            //                                
-                            //                            case 2:
-                            //                                Text("Listen or read along with some playful rhymes.")
-                            //                                
-                            //                            case 3:
-                            //                                VStack{
-                            //                                    Text("Let's start!")
-                            //                                    Image(systemName: "hand.tap")
-                            //                                        .resizable()
-                            //                                        .scaledToFit()
-                            //                                        .frame(width: 50, height: 50)
-                            //                                }
-                            //                                
-                            //                            default:
-                            //                                Text("")
-                            //                                
-                            //                            }
-                            //                        }
+                        if showOnBoarding { //to handle the appearing of the OnBoardingTextView
                             OnboardingTextView(textCounter: $textCounter, textOpacity: $textOpacity)
                         }
                     }
@@ -108,8 +77,6 @@ struct TitleScreenView: View {
                                 textOpacity = 1
                             }
                         }
-                    //                .transition(.opacity)
-                    
                 }
             }
             
