@@ -19,7 +19,7 @@ struct OnboardingTextView: View {
             case 3:
                 VStack {
                     Text("Let's start!")
-                    .font(Font.custom("Bolota Bold", size: 40))
+                        .font(Font.custom("Bolota Bold", size: 40))
                     Image(systemName: "hand.tap")
                         .resizable()
                         .scaledToFit()
@@ -37,6 +37,6 @@ struct OnboardingTextView: View {
                 Text("")
             }
         }
-        .opacity(textOpacity) // Apply opacity here
+        .opacity(textOpacity)
     }
 }

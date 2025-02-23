@@ -9,7 +9,7 @@ struct TitleScreenView: View {
     
     @State var isWiggling: Bool = false //to check the wiggling animation
     @State var navigateToNextView: Bool = false //to control the navigation to the next view
-    @State var textCounter: Int = 0 //to control the text that will appear on the screen for the on-boarding
+    @State var textCounter: Int = 0 //to control the on-going text that will appear on the screen for the on-boarding
     @State var showOnBoarding: Bool = false //to control the appearing of the onBoarding texts
     @State var textOpacity: Double = 0 // Controls text fade-in animation
     @State var showAView: Bool = false //to control the navigation to AView
@@ -22,7 +22,7 @@ struct TitleScreenView: View {
                 ZStack{
                     
                     if !showAView { //to control the showing of TitleScreenView or AView
-                        //TITLE SCREEN BACKGROUND
+                        //COLOR BACKGROUND
                         Image("background")
                             .resizable()
                             .scaledToFill()
@@ -41,6 +41,20 @@ struct TitleScreenView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: size.width, height: size.height)
+                            
+                            VStack{
+                                Spacer()
+                                Text("(For a better experience, it's important to use the app in horizontal mode and on an ipad)")
+                                    .font(Font.custom("Bolota Bold", size: 20))
+                                    .tracking(1.0)
+                                    .onAppear{
+                                        withAnimation(
+                                            .easeInOut(duration: 0.5)
+                                        ) {
+                                            textOpacity = 1
+                                        }
+                                    }
+                            }.padding()
                         }
                         
                         //EMOTIONS MIDDLEGROUND
@@ -77,6 +91,7 @@ struct TitleScreenView: View {
                 }
                 .font(Font.custom("Bolota Bold", size: 30))
                 .foregroundColor(.black)
+                .tracking(3.0)
                 .onAppear{
                     withAnimation(
                         .easeInOut(duration: 0.5)
@@ -86,11 +101,9 @@ struct TitleScreenView: View {
                 }
             }
         }
-//        .animation(.easeInOut(duration: 0.5), value: showAView)
         .onTapGesture{
             if !showOnBoarding {
-                //with First Tap the alphabet stop wiggling and the first text is shown
-                isWiggling = false
+                //with First Tap the first text is shown
                 showOnBoarding = true
                 textOpacity = 0 // Reset opacity before showing text
                 withAnimation(.easeInOut(duration: 1)) {
