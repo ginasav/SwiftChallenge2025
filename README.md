@@ -2,7 +2,8 @@
 
 ABFeels is an innovative iPad application that transforms alphabet learning into an emotional journey. By connecting abstract letters to concrete emotions, this app creates an inclusive learning environment that resonates particularly well with children who have linguistic challenges. Each letter becomes the protagonist of its own story, brought to life through hand-crafted illustrations and interactive scenes that respond to intuitive iPad gestures.
 
-![[TitleScreenView.png]]
+![TitleScreenView](https://github.com/user-attachments/assets/42ea10a5-de3a-4c5d-a92b-555add13f1b7)
+
 
 ![[AView.png]]
 
