@@ -6,8 +6,6 @@ ABFeels is an innovative iPad application that transforms alphabet learning into
 
 <img src="https://github.com/user-attachments/assets/ec27b36e-b463-4e55-aa48-1f5df2f22365" alt="AView" width="500" height="376">
 
-![BView](https://github.com/user-attachments/assets/76422780-5683-4b24-a90f-5acd1b46be4c)
-
 <img src="https://github.com/user-attachments/assets/76422780-5683-4b24-a90f-5acd1b46be4c" alt="BView" width="500" height="376">
 
 ## Features
