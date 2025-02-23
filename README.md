@@ -23,7 +23,7 @@ ABFeels is an innovative iPad application that transforms alphabet learning into
     3. Build and run on your preferred iOS simulator or device
 
 ## Credits and Licensing
-For detailed information about open-source software and fonts used in this project, please refer to our [LICENSE](LICENSE) file.
+For detailed information about open-source software and fonts used in this project, please refer to our [LICENSE.md](LICENSE) file.
 
 Developed by Gina Saviano for the Swift Student Challenge 2025.
 
